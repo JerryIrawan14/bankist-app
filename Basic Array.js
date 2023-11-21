@@ -121,7 +121,25 @@ const displayMovements = function(movements){
 };
 displayMovements(account1.movements)
 
+
+const calcFinalBalance = function(movement){
+  const balance = movement.reduce((acc, mov) => acc + mov,0);
+  labelBalance.textContent = `$ ${balance} USD`
+};
+calcFinalBalance(account1.movements);
+
+
 console.log(containerMovements.innerHTML);
+
+// const createUsername = function(accs){
+//   accs.forEach(function(acc){
+//     acc.username = acc.owner.toLowerCase().split(' ').map(name => name(0)).join('')
+    
+//   })
+// }
+
+// createUsername(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -170,6 +188,7 @@ const movementsUSDfor = [];
 for(const mov of movements)movementsUSDfor.push(mov * IDRTOusd)
 console.log(movementsUSDfor);
 
+
 // Filter Method = return element with some condition
 
 const deposit = movements.filter(function(mov){
@@ -198,10 +217,25 @@ console.log(withdrawalFor);
 console.log(movements);
 
 // accumulator = snowball effect
-const Balance = movements.reduce(function(acc,curr,i,arr){
+// const Balance = movements.reduce(function(acc,curr,i,arr){
 
-    console.log(`iteration ${i}:${acc}`);
-    return acc + curr
-},0)
+//     console.log(`iteration ${i}:${acc}`);
+//     return acc + curr
+// },0)
 
-console.log(Balance);
+const balance = movements.reduce((acc,cur) => acc+cur,0)
+console.log(balance);
+
+let balanceFor = 0;
+
+for(const mov of movements) balanceFor += mov;
+console.log(balanceFor);
+
+// maximum value 
+const max= movements.reduce((acc,mov)=> {
+  if(acc > mov){
+    return acc;
+  }else 
+    return mov; 
+},200)
+console.log(max);
