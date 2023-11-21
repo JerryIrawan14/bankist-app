@@ -170,3 +170,38 @@ const movementsUSDfor = [];
 for(const mov of movements)movementsUSDfor.push(mov * IDRTOusd)
 console.log(movementsUSDfor);
 
+// Filter Method = return element with some condition
+
+const deposit = movements.filter(function(mov){
+  return mov >0;
+})
+
+console.log(movements);
+console.log(deposit);
+
+
+const depositFor = []
+for(const mov of movements) if(mov>0) depositFor.push(mov);
+
+console.log(depositFor);
+
+const withdrawal = movements.filter(mov => mov <0)
+console.log(withdrawal);
+
+const withdrawalFor = [];
+for(const mov of movements) if(mov<0) withdrawalFor.push(mov);
+console.log(withdrawalFor);
+
+
+// Reduce Method = Boil down/ sums all the element into one array
+
+console.log(movements);
+
+// accumulator = snowball effect
+const Balance = movements.reduce(function(acc,curr,i,arr){
+
+    console.log(`iteration ${i}:${acc}`);
+    return acc + curr
+},0)
+
+console.log(Balance);
